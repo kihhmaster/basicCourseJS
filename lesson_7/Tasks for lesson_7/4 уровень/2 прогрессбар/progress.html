@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div></div>
+
+    <!-- 
+    Задание.
+    Нужно имитировать заполнение прогресс-бара в div.
+    -->
+
+    <script>
+        let div = document.querySelector('div');
+
+        /**
+         * @param {number} percent величина процента от 0 до 100.
+         */
+        function changeProgress(percent) {
+            div.style.background = `linear-gradient(90deg, rgba(38,255,162,1) ${percent}%, rgba(255,255,255,1) ${percent}%)`;
+        }
+
+        /* 
+        Вам нужно в цикле for создать отложенные вызовы с помощью setTimeout. Т.е. в цикле должны
+        быть вызовы функции setTimeout.
+        1. В условии цикла должно быть i <= 100, т.к. именно значение счетчика будем
+        передавать в changeProgress, а там процент не может превышать 100.
+        2. В setTimeout вторым параметром надо передавать задержку, используйте счетчик цикла,
+        можете также добавить какой-нибудь коэффициент, чтобы подобрать желаемую скорость
+        заполнения прогресс-бара.
+        */
+        
+				for(let i = 0; i < 100; i++) {
+					setTimeout(() => changeProgress(i), i*60);
+					// setTimeout(() => changeProgress(i), 600); Это решение я нашел на https://learn.javascript.ru/settimeout-setinterval
+				}
+					/**
+					 * ВОПРОС??????????
+					 *  1.Сначала отрабатывает цикл передовая i от 1 до 100
+					 * Исходя из вашего решения получается что он записывает 100 функций :
+					 * setTimeout(() => changeProgress(1), 1*60)
+					 * setTimeout(() => changeProgress(2), 2*60)
+					 * setTimeout(() => changeProgress(3), 3*60)
+					 * setTimeout(() => changeProgress(4), 4*60)
+					 * ..................
+					 * setTimeout(() => changeProgress(5), 100*60)
+					 *  и поочередно их вызывает.
+					 * * Между вашим решением и моим в отладчике не видно разницы.
+					 * Вопрос... Как можно это отследить в отладчике?
+					 
+					 * 
+
+
+    </script>
+</body>
+
+</html>
